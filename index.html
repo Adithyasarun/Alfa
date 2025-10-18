@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFA AIR care SOLUTION | Premium HVAC Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === ROOT VARIABLES === */
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --secondary: #00d4ff;
+            --accent: #7b61ff;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* === BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+            display: none;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 38px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        /* === PREMIUM HEADER === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+            cursor: pointer;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* === ANIMATED HERO SLIDER === */
+        .hero-slider {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            color: white;
+            padding: 0 20px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease 0.5s;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, white, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: #cbd5e1;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* === FEATURES SECTION === */
+        .features {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-content h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .feature-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        /* === ABOUT SECTION === */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* === SERVICES SECTION === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-content h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .service-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        /* === PROJECTS SECTION === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-item {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            height: 300px;
+        }
+
+        .project-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-item:hover .project-image {
+            filter: brightness(1.2);
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-name {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .project-item:hover .project-name {
+            transform: translateY(0);
+        }
+
+        /* === LOCATIONS SECTION === */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .location-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(-50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .location-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .location-content h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .location-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .map-link:hover {
+            gap: 12px;
+            color: white;
+        }
+
+        /* === SPECIAL HIGHLIGHT SECTION === */
+        .highlight-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .highlight-content p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* === CONTACT SECTION === */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .contact-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* === FLOATING PARTICLES === */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            animation: floatParticle 8s ease-in-out infinite;
+        }
+
+        /* === TEAM SECTION === */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .team-member.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-photo {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .team-member h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* === TIMELINE SECTION === */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-content h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #cbd5e1;
+        }
+
+        /* === PREMIUM ANIMATIONS === */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            33% { transform: translateY(-30px) translateX(20px) rotate(120deg); }
+            66% { transform: translateY(20px) translateX(-20px) rotate(240deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px) rotate(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1200px) {
+            .slide h1 {
+                font-size: 3.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: 21px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .slide h1 {
+                font-size: 3.2rem;
+            }
+            
+            .nav-links {
+                gap: 25px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+            
+            .slide h1 {
+                font-size: 2.8rem;
+            }
+            
+            .slide p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .slide h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid,
+            .services-grid,
+            .projects-grid,
+            .locations-grid,
+            .contact-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .service-card {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Premium Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-img">
+                        <!-- Logo placeholder - replace with actual logo image -->
+                        <img src="logo.png" alt="ALFA AIR CARE SOLUTION" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="logo-text">
+                        ALFA AIR CARE<br>
+                        <span>SOLUTION</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a class="nav-link active" data-target="home">Home</a></li>
+                    <li><a class="nav-link" data-target="about">About</a></li>
+                    <li><a class="nav-link" data-target="services">Services</a></li>
+                    <li><a class="nav-link" data-target="projects">Projects</a></li>
+                    <li><a class="nav-link" data-target="locations">Locations</a></li>
+                    <li><a class="nav-link" data-target="contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section with Rotating Hero -->
+    <section id="home" class="section active">
+        <div class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581993192008-63fd1ea7de1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Premium HVAC Solutions for Hotels & Resorts</h1>
+                        <p>Welcome to Alfa  care Solution, your trusted partner in delivering comprehensive Heating, Ventilation, and Air Conditioning solutions for premium hospitality establishments across Kerala.</p>
+                        <div class="hero-btns">
+                            <a class="btn nav-link" data-target="services">
+                                <i class="fas fa-cogs"></i>
+                                Our Services
+                            </a>
+                            <a class="btn nav-link" data-target="contact" style="background: transparent; border: 2px solid var(--glass-border);">
+                                <i class="fas fa-phone"></i>
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80')">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Innovative Climate Control Solutions</h1>
+                        <p>Experience unparalleled comfort with our state-of-the-art HVAC systems designed for optimal performance and energy efficiency in luxury hotels and resorts.</p>
+                        <div class="hero-btns">
+                            <a class="btn nav-link" data-target="projects">
+                                <i class="fas fa-project-diagram"></i>
+                                Our Projects
+                            </a>
+                            <a class="btn nav-link" data-target="locations" style="background: transparent; border: 2px solid var(--glass-border);">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Our Locations
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1545147987-87b80ffec579?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Your Comfort, Our Priority</h1>
+                        <p>From concept to completion, we ensure every HVAC project exceeds expectations. Our commitment to quality makes us the preferred choice for premium hospitality establishments.</p>
+                        <div class="hero-btns">
+                            <a class="btn nav-link" data-target="about">
+                                <i class="fas fa-building"></i>
+                                About Us
+                            </a>
+                            <a class="btn nav-link" data-target="contact" style="background: transparent; border: 2px solid var(--glass-border);">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Visit Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Driving excellence in every project we undertake</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>DESIGN CONSULTANCY</h3>
+                        <p>Beyond execution, we offer comprehensive HVAC design consultancy services, ensuring efficient and cost-effective system implementations with precision engineering and innovative solutions.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>ON TIME DELIVERY</h3>
+                        <p>We strive to ensure that each and every one of our projects is completed before the delivery date committed to our customers, maintaining the highest standards of quality and efficiency.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>CUSTOMER DELIGHT</h3>
+                        <p>As a company, we are focused on Customer Delight, not Customer Service. For us, a Delighted Customer is a future customer, and we go above and beyond to exceed expectations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Leading HVAC solutions provider for premium hospitality in Kerala</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Excellence in Climate Control</h2>
+                    <p>Established with a vision to provide outstanding customer service in the HVAC industry, Alfa Air care Solution has emerged as a leading company specializing in premium hospitality establishments across Kerala.</p>
+                    <p>Our expertise lies in offering complete HVAC solutions for luxury hotels, resorts, and high-end commercial properties, ensuring optimal indoor air quality and energy efficiency that meets international standards.</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Expert Team</h3>
+                            <p>Our certified technicians have decades of combined experience in HVAC systems.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Quality Assurance</h3>
+                            <p>We maintain the highest standards in all our installations and services.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Customer Focus</h3>
+                            <p>Your satisfaction is our top priority in every project we undertake.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="floating-element" style="width: 120px; height: 120px; top: 50px; left: 50px; animation-delay: 0s;">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="floating-element" style="width: 100px; height: 100px; top: 200px; right: 60px; animation-delay: 2s;">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <div class="floating-element" style="width: 80px; height: 80px; bottom: 80px; left: 100px; animation-delay: 4s;">
+                        <i class="fas fa-temperature-low"></i>
+                    </div>
+                    <div style="width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1540518614846-7eded102a54d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div style="text-align: center; padding: 20px; background: rgba(0,0,0,0.7); border-radius: 15px;">
+                            <i class="fas fa-wind" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                            <h3 style="color: white;">Alfa Air care Solution</h3>
+                            <p>Premium HVAC for Hospitality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Company Timeline -->
+            <div class="section-title" style="margin-top: 100px;">
+                <h2>Our Journey</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Milestones in our growth and success</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2015 - Foundation</h3>
+                        <p>Alfa Air care Solution was established with a vision to revolutionize HVAC services in Kerala's hospitality sector.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2017 - Expansion</h3>
+                        <p>Expanded our services to cover major hotel chains and luxury resorts across South India.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2019 - Innovation</h3>
+                        <p>Introduced energy-efficient HVAC solutions, reducing client energy costs by up to 30%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2022 - Recognition</h3>
+                        <p>Awarded "Best HVAC Service Provider" by Kerala Hospitality Association for outstanding service quality.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2024 - Today</h3>
+                        <p>Serving over 50 premium hotels and resorts with state-of-the-art climate control solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Comprehensive HVAC solutions for premium hospitality</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>HVAC System Design and Installation</h3>
+                        <p>We provide customized HVAC system designs that meet the specific requirements of luxury hotels and resorts, ensuring efficient temperature control and superior air quality.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Maintenance and Support</h3>
+                        <p>Our dedicated team offers regular maintenance services to ensure your HVAC systems operate at peak efficiency, minimizing downtime and extending equipment lifespan.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Energy Efficiency Consulting</h3>
+                        <p>We assess your current HVAC systems and provide recommendations to enhance energy efficiency, helping you reduce operational costs and environmental impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Projects</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Showcasing our exceptional HVAC installations across Kerala</p>
+            </div>
+            
+            <!-- Special Highlight Section -->
+            <div class="highlight-section" style="margin-bottom: 80px;">
+                <div class="container">
+                    <div class="highlight-content">
+                        <div class="highlight-badge">
+                            <i class="fas fa-star"></i> PREMIUM PROJECT
+                        </div>
+                        <h2>Fortune Airport Road Kochi</h2>
+                        <p>Our flagship project showcasing state-of-the-art HVAC solutions for luxury accommodations. This premium establishment features our most advanced climate control systems, ensuring unparalleled comfort and energy efficiency.</p>
+                        <a class="btn" href="https://share.google/TT3nBKsMCYpFKuQ1E" target="_blank" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.3);">
+                            <i class="fas fa-eye"></i>
+                            View Project Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-image"  style="background: url('hotel\ noble.png') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">Hotel Nobel Residency</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('tanancore\ place.jpeg') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">Hotel Travancore Palace</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('tanancore\ place.jpeg') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">Hotel Travancore Palace</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('queen\ resort.png') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">River Queen Resort</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('HOTEL\ ZENHA.png') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">Hotel Zenha International</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('Eallisto-Projects.png') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">Eallisto Projects, Calicut</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image" style="background: url('VSC-Porto-Marina.png') center/cover;">
+                        <div class="project-overlay">
+                            <div class="project-name">VSC Porto Marina, TVM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- House Boat Project Section -->
+    <section id="houseboat" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hotel Hayat House Boat</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Luxury floating accommodation with premium climate control</p>
+            </div>
+            <div class="about-content">
+                <div class="about-visual" style="height: 400px;">
+                    <div style="width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1597076877711-d01d703acbcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; border-radius: 20px;"></div>
+                </div>
+                <div class="about-text">
+                    <h2>Premium House Boat Experience</h2>
+                    <p>Hotel Hayat House Boat represents our expertise in providing specialized HVAC solutions for unique hospitality environments. This luxury house boat features custom-designed climate control systems that maintain perfect comfort levels regardless of external conditions.</p>
+                    <p>Our installation includes energy-efficient air conditioning, specialized ventilation systems, and humidity control to ensure guest comfort while navigating Kerala's beautiful backwaters.</p>
+                    <a class="btn" href="#">
+                        <i class="fas fa-ship"></i>
+                        Explore House Boat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Office</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Visit our main office for consultations and project discussions</p>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="location-content">
+                        <h3>Main Office</h3>
+                        <p>Door No: 15/257 AS, Suite No 208 B, Heiley Offices, Basement Floor, Pallath Square, FACT Kalamassery Road, Kalamassery P.O, Ernakulam - 683104</p>
+                        <p style="color: var(--secondary); font-weight: 600;">📍 Head Office</p>
+                        <a href="https://www.google.com/maps" target="_blank" class="map-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p style="color: #cbd5e1; font-size: 1.2rem;">Please reach out to us anytime so that we can help you with your requirement</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+91 89210 13046</p>
+                    <p>+91 79073 09340</p>
+                    <p style="color: var(--secondary);">Available 24/7</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>sales@alfaaircaresolutions.in</p>
+                    <p style="color: var(--secondary);">Quick Response</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Mon - Sun: 8:00 AM - 8:00 PM</p>
+                    <p style="color: var(--secondary);">24/7 Emergency Service</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Technical & Sales Support</p>
+                    <p style="color: var(--secondary);">Always Here to Help</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Consultation</h3>
+                    <p>Free Site Visit & Quote</p>
+                    <p style="color: var(--secondary);">Book Appointment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, #0a0f1c 0%, #0f172a 100%); color: white; padding: 80px 0 30px; position: relative; overflow: hidden;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; margin-bottom: 60px; position: relative; z-index: 2;">
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 30px; position: relative; display: inline-block;">Alfa Air care Solution</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 20px;">Your trusted partner for premium HVAC solutions across Kerala. Excellence in climate control since our inception.</p>
+                    <div style="color: #cbd5e1; margin-bottom: 15px;">
+                        <strong>Address:</strong><br>
+                        Door No: 15/257 AS, Suite No 208 B,<br>
+                        Heiley Offices, Basement Floor,<br>
+                        Pallath Square, FACT Kalamassery Road,<br>
+                        Kalamassery P.O, Ernakulam - 683104
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <a href="mailto:sales@alfaaircaresolutions.in" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 12px; color: white; text-decoration: none; font-size: 1.3rem; transition: var(--transition);">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 30px; position: relative; display: inline-block;">Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px;"><a href="#" class="nav-link" data-target="home" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" class="nav-link" data-target="services" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" class="nav-link" data-target="projects" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" class="nav-link" data-target="contact" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 30px; position: relative; display: inline-block;">Our Services</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px;"><a href="#" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> HVAC Design</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Installation</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#" style="color: #cbd5e1; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 10px;"><i class="fas fa-chevron-right"></i> Energy Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; font-size: 1rem; position: relative; z-index: 2;">
+                <p>&copy; 2024 Alfa Air care Solution. All rights reserved. | Premium HVAC Solutions for Hospitality</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 25;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 40 + 10;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const animationDelay = Math.random() * 5;
+                const animationDuration = Math.random() * 15 + 10;
+                const opacity = Math.random() * 0.3 + 0.1;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}vw`;
+                particle.style.top = `${top}vh`;
+                particle.style.animationDelay = `${animationDelay}s`;
+                particle.style.animationDuration = `${animationDuration}s`;
+                particle.style.opacity = opacity;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Hero Slider Functionality
+        function initHeroSlider() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
+            
+            // Initialize first slide
+            showSlide(currentSlide);
+        }
+
+        // Navigation System
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Update active nav link
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                            
+                            // Trigger animations for visible elements
+                            setTimeout(() => {
+                                const animatables = section.querySelectorAll('.feature-card, .service-card, .project-item, .location-card, .contact-card, .team-member, .timeline-item');
+                                animatables.forEach((item, index) => {
+                                    setTimeout(() => {
+                                        item.classList.add('visible');
+                                    }, index * 150);
+                                });
+                            }, 300);
+                        }
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                mobileMenuBtn.innerHTML = navLinks.style.display === 'flex' ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initHeroSlider();
+            setupNavigation();
+            
+            // Auto-show home section animations
+            setTimeout(() => {
+                const homeAnimations = document.querySelectorAll('.feature-card, .service-card, .project-item, .location-card, .contact-card, .team-member, .timeline-item');
+                homeAnimations.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 1000);
+        });
+
+        // Add parallax effect to particles
+        window.addEventListener('scroll', () => {
+            const particles = document.querySelector('.particles');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            particles.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add bounce animation to buttons on hover
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.animation = 'bounce 0.6s';
+            });
+            btn.addEventListener('animationend', function() {
+                this.style.animation = '';
+            });
+        });
+    </script>
+</body>
+</html>
