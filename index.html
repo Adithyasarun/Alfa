@@ -1113,7 +1113,61 @@
             }
         }
     </style>
-</head>
+
+    <style>
+    /* === Enhanced Mobile Dropdown Menu === */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 0;
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        .nav-links.show {
+            display: flex !important;
+        }
+
+        .nav-links li {
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .nav-links a {
+            width: 100%;
+            font-size: 1.2rem;
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+    }
+    </style>
+    </head>
+    
 <body>
     <!-- Animated Background Particles -->
     <div class="particles" id="particles"></div>
@@ -1725,6 +1779,10 @@
         
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('show')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
                 navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
                 mobileMenuBtn.innerHTML = navLinks.style.display === 'flex' ? 
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
